@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Polling Question Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mx-auto mt-14 p-6 bg-gray-800 rounded-lg shadow-lg">
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}
+        <fieldset class="bg-gray-700 p-4 rounded-lg">
+            <legend><h1 class="text-center text-white">{{ question.question_text }}</h1></legend>
+            {% if error_message %}<p class="text-red-500"><strong>{{ error_message }}</strong></p>{% endif %}
+            {% for choice in question.choice_set.all %}
+                <div class="mt-2">
+                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="mr-2">
+                    <label for="choice{{ forloop.counter }}" class="text-white">{{ choice.choice_text }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Vote" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+    </form>
+</div>
+
+</body>
+</html>

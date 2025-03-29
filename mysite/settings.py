@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-6h+#j#o0qacnqgfaynci-$vsmnt=k6zspfn)6t)yah8dkvqpau
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'testserver',
+    # add my domain name here or reserved IP address
+    # proxy server IP address
+]
 
 
 # Application definition
@@ -38,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
+    'tailwind',
 ]
 
 MIDDLEWARE = [

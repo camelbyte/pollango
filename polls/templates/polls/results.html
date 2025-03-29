@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Poll Results</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+<h1 style="mx-auto box-content size-128 border-4">{{ question.question_text }}</h1>
+<p class="mt-14 container-sm text-center text-lg font-semibold">Results:</p>
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li class="mb-2">{{ choice.choice_text }}: {{ choice.votes }} votes
+            {{ choice.votes|pluralize }}</li>
+    {% endfor %}
+
+
+    <li class="font-bold">Total votes: {{ question.total_votes }}</li>
+    <a href="{% url 'polls:detail' question.id %}" class=text-blue-500 hover:underline>Vote again</a>
+</ul>
+
+</body>
+</html>

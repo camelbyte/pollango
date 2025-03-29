@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Django Polling Application</title>
+  {% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto mt-14 p-6 bg-gray-800 rounded-lg shadow-lg">
+        {% if latest_question_list %}
+            <ul class="space-y-4">
+            {% for question in latest_question_list %}
+                <li><a href="{% url 'polls:detail' question.id %}" class="text-blue-400 hover:underline">{{ question.question_text }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

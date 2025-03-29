@@ -1,0 +1,22 @@
+body {
+    background-color: #ffffff;
+    font-family: "Ubuntu Mono", monospace;
+    color: #282828;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+fieldset {
+    background-color: #f0f0f0;
+    border: 2px solid #282828;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+}
+
+
+li a {
+    color: green;
+}
